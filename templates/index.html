@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detector</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { padding: 10px; font-size: 16px; }
+        .result { margin-top: 20px; font-size: 18px; font-weight: bold; }
+        .spam { color: red; }
+        .not-spam { color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>Spam Detector</h2>
+    <form method="POST">
+        <input type="text" name="message" placeholder="Enter a message" required>
+        <button type="submit">Check Spam</button>
+    </form>
+
+    {% if label %}
+    <div class="result">
+        <p>Prediction: <span class="{{ 'spam' if label == 'Spam' else 'not-spam' }}">{{ label }}</span></p>
+        <p>Confidence: {{ confidence }}%</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
