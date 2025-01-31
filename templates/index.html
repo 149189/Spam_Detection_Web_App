@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam Detector</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsAoN8dKzMlprmy+r7soiOQEGqvYk5l5sbjFIFvVtSojVXQndpdq4h+02kFCXoP" crossorigin="anonymous">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        input, button { padding: 10px; font-size: 16px; }
         .result { margin-top: 20px; font-size: 18px; font-weight: bold; }
         .spam { color: red; }
         .not-spam { color: green; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Spam Detector</h2>
-    <form method="POST">
-        <input type="text" name="message" placeholder="Enter a message" required>
-        <button type="submit">Check Spam</button>
-    </form>
+    <div class="container">
+        <h2 class="mb-4">Spam Detector</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <input type="text" name="message" class="form-control" placeholder="Enter a message" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Spam</button>
+        </form>
 
-    {% if label %}
-    <div class="result">
-        <p>Prediction: <span class="{{ 'spam' if label == 'Spam' else 'not-spam' }}">{{ label }}</span></p>
-        <p>Confidence: {{ confidence }}%</p>
+        {% if label %}
+        <div class="result mt-4">
+            <p>Prediction: <span class="{{ 'spam' if label == 'Spam' else 'not-spam' }}">{{ label }}</span></p>
+            <p>Confidence: {{ confidence }}%</p>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBqP9sjjxJktKzwn8tX1wWiS1f8HDtbq0bz5tU6Zf6C3rN0I" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-cu57L1+vEjKhNr69i59A2hFAivgP1GyjfeWl0M8QgZwLLO7+8vjl1KjSuHLmLnVG" crossorigin="anonymous"></script>
 
 </body>
 </html>
